@@ -1,0 +1,19 @@
+//Calculadora Primos
+#include <stdio.h>
+int main() {
+    int num1,num2=1,divi=0;
+    printf ("Ingrese un numero:");
+    scanf ("%d",&num1);
+    while (num2<=num1) {
+        if (num1%num2==0) {
+            divi++;
+        }
+        num2++;
+    }
+    if (divi==2) {
+        printf ("El numero es primo");
+    } else {
+        printf ("El numero no es primo");
+    }
+    return 0;
+}
