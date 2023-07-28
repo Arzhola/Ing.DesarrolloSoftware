@@ -1,0 +1,68 @@
+//Calculadora Pares
+#include <stdio.h>
+int main() {
+    int valor1,valor2,valor3,valor4,valor5,valor6,valor7,valor8,valor9,valor10;
+    printf ("Ingrese 10 numeros:");
+    scanf ("%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",&valor1,&valor2,&valor3,&valor4,&valor5,&valor6,&valor7,&valor8,&valor9,&valor10);
+    if ((valor1%2) == 0)
+    {
+        printf ("El numero %d es par",valor1);
+    } else {
+        printf ("El numero %d es impar",valor1);
+    }
+    if ((valor2%2) == 0)
+    {
+        printf ("\nEl numero %d es par",valor2);
+    } else {
+        printf ("\nEl numero %d es impar",valor2);
+    }
+    if ((valor3%2) == 0)
+    {
+        printf ("\nEl numero %d es par",valor3);
+    } else {
+        printf ("\nEl numero %d es impar",valor3);
+    }
+    if ((valor4%2) == 0)
+    {
+        printf ("\nEl numero %d es par",valor4);
+    } else {
+        printf ("\nEl numero %d es impar",valor4);
+    }
+    if ((valor5%2) == 0)
+    {
+        printf ("\nEl numero %d es par",valor5);
+    } else {
+        printf ("\nEl numero %d es impar",valor5);
+    }
+    if ((valor6%2) == 0)
+    {
+        printf ("\nEl numero %d es par",valor6);
+    } else {
+        printf ("\nEl numero %d es impar",valor6);
+    }
+    if ((valor7%2) == 0)
+    {
+        printf ("\nEl numero %d es par",valor7);
+    } else {
+        printf ("\nEl numero %d es impar",valor7);
+    }
+    if ((valor8%2) == 0)
+    {
+        printf ("\nEl numero %d es par",valor8);
+    } else {
+        printf ("\nEl numero %d es impar",valor8);
+    }
+    if ((valor9%2) == 0)
+    {
+        printf ("\nEl numero %d es par",valor9);
+    } else {
+        printf ("\nEl numero %d es impar",valor9);
+    }
+    if ((valor10%2) == 0)
+    {
+        printf ("\nEl numero %d es par",valor10);
+    } else {
+        printf ("\nEl numero %d es impar",valor10);
+    }
+    return 0;
+}
