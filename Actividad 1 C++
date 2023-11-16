@@ -1,0 +1,20 @@
+//Ejercicio sobre la ejecucion de sintaxis
+//Calcular si alguien es mayor de edad//
+
+#include <iostream>
+
+int main() {
+    int Edad;
+    std::cout << "Ingresar Edad:";
+    std::cin >> Edad;
+    if (Edad >= 18)
+    { 
+        std::cout << "Es mayor de edad";
+    }
+    else 
+    {
+        std::cout << "No es mayor de edad";
+    }
+
+    return 0;
+}
