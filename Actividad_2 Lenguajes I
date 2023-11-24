@@ -1,0 +1,35 @@
+//Actividad 2 
+//Operaciones Basicas 
+
+#include <iostream>
+
+using namespace std;
+
+int main ()
+{
+    float Num_1 = 0.0, Num_2 = 0.0, Num_S = 0.0,
+    Num_R = 0.0, Num_M = 0.0, Num_D = 0.0;
+    
+    cout << "Ingrese el primer numero: ";
+    cin >> Num_1;
+    cout << "Ingrese el segundo numero: ";
+    cin >> Num_2;
+    
+    Num_S = Num_1 + Num_2;
+    cout << "La suma de los numeros es: " << Num_S << endl;
+    Num_R = Num_1 - Num_2;
+    cout << "La resta de los numeros es: " << Num_R << endl;
+    Num_M = Num_1 * Num_2;
+    cout << "La multiplicación de los numeros es: " << Num_M << endl;
+    
+    if (Num_1 == 0.0 || Num_2 ==0.0)
+    {
+        cout << "No se puede dividir entre 0, Intente con otro numero";
+    }
+    else
+    {
+        Num_D = Num_1 / Num_2;
+        cout << "La divición de los numeros es: " << Num_D << endl;
+    }
+    return 0;
+}
