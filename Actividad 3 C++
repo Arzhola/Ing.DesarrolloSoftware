@@ -1,0 +1,77 @@
+#include <iostream>
+#include <cctype>
+
+using namespace std;
+
+int main()
+{
+    string Nombre = "", Apellido_P = "", Apellido_M = "", Dia = "", Mes = "",
+    Year = "", RFC = "", Vocal = "";
+    int Largo_N, Largo_AP, Largo_AM;
+    char Pregunta;
+    
+    cout << "Calcula tu RFC sin Homoclave" << endl;
+    cout << "Introduce tu Nombre: ";
+    cin >> Nombre;
+    cout << "Ingresa tu Apellido Paterno: ";
+    cin >> Apellido_P;
+    cout << "¿Tiene Apellido materno? S/N: ";
+    cin >> Pregunta;
+    
+    if (Pregunta == 's' || Pregunta == 'S')
+    {
+        cout << "Ingrese el Apellido Materno: ";
+        cin >> Apellido_M;
+    }
+    else if (Pregunta == 'n' || Pregunta == 'N')
+    {
+        Apellido_M = "X";
+    }
+    cout << "Fecha de Nacimiento (Formarto DD/MM/AAAA)" << endl;
+    cout << "Dia: ";
+    cin >> Dia;
+    cout << "Mes: ";
+    cin >> Mes;
+    cout << "Año: ";
+    cin >> Year;
+    
+    Largo_AP = Apellido_P.size();
+    Largo_AM = Apellido_M.size();
+    Largo_N = Nombre.size();
+    
+    for (int LAP = 0; LAP < Largo_AP; ++LAP)
+    {
+        Apellido_P[LAP] = toupper (Apellido_P[LAP]);
+    }
+    for (int LAM = 0; LAM < Largo_AM; ++LAM)
+    {
+        Apellido_M[LAM] = toupper (Apellido_M[LAM]);
+    }
+    for (int LN = 0; LN < Largo_N; ++LN)
+    {
+        Nombre[LN] = toupper (Nombre[LN]);
+    }
+    
+    RFC = Apellido_P.substr (0,1);
+
+    for (int i = 1; i < Apellido_P.length(); ++i)
+    {
+        char letra = Apellido_P[i];
+        if (letra == 'A' || letra == 'E' || letra == 'I' || letra == 'O' || letra == 'U')
+        { 
+            Vocal += letra;
+            break;
+        }
+    }
+    
+    RFC = RFC + Vocal;
+    RFC = RFC + Apellido_M.substr(0,1);
+    RFC = RFC + Nombre.substr (0,1);
+    RFC = RFC + Year.substr (2,2);
+    RFC = RFC + Mes;
+    RFC = RFC + Dia;
+    
+    cout << "Tu RFC sin homoclave es: " << RFC << endl;
+    
+    return 0;
+}
