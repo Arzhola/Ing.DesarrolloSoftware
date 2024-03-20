@@ -1,0 +1,20 @@
+USE [EMPRESA UNI]
+GO
+
+/****** Object:  Table [dbo].[Centro]    Script Date: 20/03/2024 05:56:22 p. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Centro](
+	[N_Centro] [int] NOT NULL,
+	[Nombre_Centro] [varchar](50) NOT NULL,
+	[Cudad] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_Centro] PRIMARY KEY CLUSTERED 
+(
+	[N_Centro] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
