@@ -1,0 +1,99 @@
+// Sqltestfirstattempt.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
+//
+#include <windows.h>
+#include <sql.h>
+#include <sqlext.h>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+
+int main() {
+    SQLHENV hEnv;
+    SQLHDBC hDbc;
+    SQLRETURN ret;
+
+    // Allocate an environment handle
+    ret = SQLAllocHandle(SQL_HANDLE_ENV, SQL_NULL_HANDLE, &hEnv);
+    ret = SQLSetEnvAttr(hEnv, SQL_ATTR_ODBC_VERSION, (SQLPOINTER)SQL_OV_ODBC3, 0);
+
+    // Allocate a connection handle
+    ret = SQLAllocHandle(SQL_HANDLE_DBC, hEnv, &hDbc);
+
+    // Connect to the database
+    ret = SQLConnect(hDbc, (SQLWCHAR*)L"sqlexpress", SQL_NTS, (SQLWCHAR*)L"Username", SQL_NTS, (SQLWCHAR*)L"Password", SQL_NTS);
+
+    if (ret == SQL_SUCCESS || ret == SQL_SUCCESS_WITH_INFO) { 
+        cout << "+----------------+-----------------------------+------------------+------------+-----------+--------------+----------+" << endl;
+        cout << "| N. de Empleado |            Nombre           | F. de Nacimineto |     RFC    | ID_Puesto | ID_Directivo | N_Centro |" << endl;
+        cout << "+----------------+-----------------------------+------------------+------------+-----------+--------------+----------+" << endl;
+
+        // Example of executing a query
+        SQLHSTMT hStmt;
+        ret = SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt);
+
+        // Example SELECT query
+        ret = SQLExecDirect(hStmt, (SQLWCHAR*)L"SELECT * FROM Empleados", SQL_NTS);
+        ret = SQLExecDirect(hStmt, (SQLWCHAR*)L"SELECT * FROM Centro", SQL_NTS);
+        
+            SQLCHAR Nombre[60];
+            SQLCHAR Apellido_paterno[60];
+            SQLCHAR Apellido_materno[30];
+            SQLCHAR F_Nacimiento[50];
+            SQLCHAR N_Empleado[7];
+            SQLCHAR RFC[12];
+            SQLCHAR ID_Puesto[5];
+            SQLCHAR ID_Directivo[5];
+            SQLCHAR N_Centro[8];
+            
+          
+
+            //int age;
+            while (SQLFetch(hStmt) == SQL_SUCCESS) {
+                SQLGetData(hStmt, 1, SQL_C_CHAR, N_Empleado, sizeof(N_Empleado), NULL);
+                SQLGetData(hStmt, 2, SQL_C_CHAR, Nombre, sizeof(Nombre), NULL);
+                SQLGetData(hStmt, 3, SQL_C_CHAR, Apellido_paterno, sizeof(Apellido_paterno), NULL);
+                SQLGetData(hStmt, 4, SQL_C_CHAR, Apellido_materno, sizeof(Apellido_materno), NULL);
+                SQLGetData(hStmt, 5, SQL_C_CHAR, F_Nacimiento, sizeof(F_Nacimiento), NULL);
+                SQLGetData(hStmt, 6, SQL_C_CHAR, RFC, sizeof(RFC), NULL);
+                SQLGetData(hStmt, 7, SQL_C_CHAR, ID_Puesto, sizeof(ID_Puesto), NULL);
+                SQLGetData(hStmt, 8, SQL_C_CHAR, ID_Directivo, sizeof(ID_Directivo), NULL);
+                SQLGetData(hStmt, 9, SQL_C_CHAR, N_Centro, sizeof(N_Centro), NULL);
+
+                
+                
+                
+
+                //SQLGetData(hStmt, 2, SQL_C_LONG, &age, 0, NULL);
+
+                cout << "|     " << N_Empleado << setw(7) << "| " << Nombre << " " << Apellido_paterno << " " << Apellido_materno << "        |     " << F_Nacimiento << "   | " << RFC << " |    " << ID_Puesto << "    |      " << ID_Directivo << "     |   " << N_Centro << "  |" << endl;
+                cout << "+--------------------------------------------------------------------------------------------------------------------+" << endl;
+            }
+            
+        
+
+        // Free statement handle
+        SQLFreeHandle(SQL_HANDLE_STMT, hStmt);
+    }
+    else {
+        cout << "Failed to connect to database." << endl;
+    }
+
+    // Disconnect and free handles
+    SQLDisconnect(hDbc);
+    SQLFreeHandle(SQL_HANDLE_DBC, hDbc);
+    SQLFreeHandle(SQL_HANDLE_ENV, hEnv);
+
+    return 0;
+}
+
+// Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
+// Depurar programa: F5 o menú Depurar > Iniciar depuración
+
+// Sugerencias para primeros pasos: 1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
+//   2. Use la ventana de Team Explorer para conectar con el control de código fuente
+//   3. Use la ventana de salida para ver la salida de compilación y otros mensajes
+//   4. Use la ventana Lista de errores para ver los errores
+//   5. Vaya a Proyecto > Agregar nuevo elemento para crear nuevos archivos de código, o a Proyecto > Agregar elemento existente para agregar archivos de código existentes al proyecto
+//   6. En el futuro, para volver a abrir este proyecto, vaya a Archivo > Abrir > Proyecto y seleccione el archivo .sln
