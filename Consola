@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ejercicio_2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string Nombre;
+            string Edad;
+            string F_Nacimineto;
+            string Carrera;
+
+            Console.WriteLine("Bienvenidos a UMI/Universidad Coppel");
+            Console.WriteLine("\nCapturar los siguientes datos:");
+            Console.WriteLine("\nNombre Completo:");
+            Nombre = Console.ReadLine();
+            Console.WriteLine("Edad:");
+            Edad = Console.ReadLine();
+            Console.WriteLine("Fecha De Nacimiento:");
+            F_Nacimineto = Console.ReadLine();
+            Console.WriteLine("Carrera a la que desea ingresar:");
+            Carrera = Console.ReadLine();
+            Console.WriteLine("\nGracias " + Nombre + " por formar parte de UMI/Universidad Coppel" + "\nBienvenido a la carrera de " + Carrera);
+            Console.ReadKey();
+
+        }
+    }
+}
